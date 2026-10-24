@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./Rift-Runner
 
     steps:
       - name: Checkout repository
@@ -26,7 +29,7 @@ jobs:
       - name: Create Zip Archive
         run: |
           cd dist
-          zip -r ../RiftRunner-WebBuild.zip .
+          zip -r ../../RiftRunner-WebBuild.zip .
 
       - name: Upload Zip Artifact
         uses: actions/upload-artifact@v4
