@@ -57,6 +57,34 @@ h1{margin:0;font-size:clamp(38px,11vw,84px);letter-spacing:.18em;text-shadow:0 0
 <script>window.onerror=function(m,u,l){var e=document.getElementById('sub');if(e)e.textContent='Error: '+m+' @'+l}</script>
 <!--THREE-INLINE-->
 <script>
+// ==========================================
+// SITELOCK SECURITY CHECK
+// ==========================================
+(function() {
+    const allowedDomains = [
+        "localhost",
+        "127.0.0.1",
+        "crazygames.com",     // Allowed portal
+        "netlify.app"        // Allowed web testing host
+    ];
+
+    const currentHost = window.location.hostname;
+    const isAuthorized = allowedDomains.some(domain => currentHost.includes(domain));
+
+    if (!isAuthorized) {
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.innerHTML = `
+                <div style="background:#050505; color:#00f0ff; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:sans-serif; text-align:center;">
+                    <h1 style="letter-spacing: 2px;">RIFT RUNNER</h1>
+                    <p style="color:#aaa;">This game build is licensed exclusively for authorized domains.</p>
+                </div>
+            `;
+        });
+        throw new Error("Sitelock violation: Unauthorized domain.");
+    }
+})();
+// ==========================================
+
 window.__RR=()=>{
 const T=THREE,$=i=>document.getElementById(i),R=Math.random,PI=Math.PI,cl=(v,a,b)=>Math.max(a,Math.min(b,v)),lp=(a,b,k)=>a+(b-a)*k,ex=(k,d)=>1-Math.exp(-k*d),cv=$('c');
 let rd;try{rd=new T.WebGLRenderer({canvas:cv,antialias:false,powerPreference:'high-performance'})}catch(e){$('sub').textContent='WebGL is unavailable on this device.';$('go').style.display='none';return}
