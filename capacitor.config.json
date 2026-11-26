@@ -1,0 +1,9 @@
+{
+  "appId": "com.ranzorr.riftrunner",
+  "appName": "Rift Runner",
+  "webDir": "www",
+  "backgroundColor": "#04050b",
+  "server": {
+    "androidScheme": "https"
+  }
+}

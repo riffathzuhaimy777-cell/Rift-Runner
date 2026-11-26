@@ -1,0 +1,8 @@
+[build]
+  command = "node tools/vendor.js"
+  publish = "www"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
